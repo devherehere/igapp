@@ -4,15 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-
-  <meta property="og:title" content="">
-  <meta property="og:description" content="">
-  <meta property="og:image" content="">
+  <meta property="og:url" content="http://devherehere.github.io/igapp/index.html">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="">
-  <title></title>
-
+  <meta property="og:title" content="Victory">
+  <meta property="og:description" content="สร้างป้ายเชียร์ฟุตบอลทีมชาติไทย">
+  <meta property="og:image" content="https://devherehere.files.wordpress.com/2015/09/zigoig.jpg">
+  <title>Victory</title>
+  <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="bower_components/uikit/css/uikit.gradient.min.css">
+  <link rel="shortcut icon" href="images/logo.ico" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
   <script src="bower_components/uikit/js/uikit.min.js"></script>
 
@@ -30,26 +30,39 @@
       m.parentNode.insertBefore(a, m)
     })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-    ga('create', 'UA-64600231-2', 'auto');
+    ga('create', 'UA-66889611-1', 'auto');
     ga('send', 'pageview');
-  </script>
-  <script>
-    window.twttr = (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0],
-        t = window.twttr || {};
-      if (d.getElementById(id)) return t;
+    //facebook
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId: '1629772610604453',
+        xfbml: true,
+        version: 'v2.4'
+      });
+    };
+
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {
+        return;
+      }
       js = d.createElement(s);
       js.id = id;
-      js.src = "https://platform.twitter.com/widgets.js";
+      js.src = "//connect.facebook.net/en_US/sdk.js";
       fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 
-      t._e = [];
-      t.ready = function(f) {
-        t._e.push(f);
-      };
-
-      return t;
-    }(document, "script", "twitter-wjs"));
+    //twitter
+    ! function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0],
+        p = /^http:/.test(d.location) ? 'http' : 'https';
+      if (!d.getElementById(id)) {
+        js = d.createElement(s);
+        js.id = id;
+        js.src = p + '://platform.twitter.com/widgets.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }
+    }(document, 'script', 'twitter-wjs');
   </script>
 
   <style>
@@ -57,84 +70,65 @@
       font-family: MAX_PINJOHN;
       src: url('MAX_PINJOHN.ttf');
     }
+    @font-face {
+      font-family: Fontcraft;
+      src: url('Fontcraft.otf');
+    }
   </style>
 
 </head>
-
-
-<body >
-
-  <div id="content_container" ng-controller="igController" ng-init="mock = 0">
-    <div class="uk-grid">
-      <div class="uk-width-large-1-3 uk-width-medium-1-3 uk-width-small-1-3 uk-width-1-3 uk-container-center">
-        <canvas id="resultCanvas" style="display:inline-block;max-width:300px;"></canvas>
-        <div style="margin-bottom:30px;text-align:center">
-        </div>
-      </div>
-    </div>
-
-    <div class="uk-grid">
-      <div class="uk-width-large-1-3 uk-width-medium-1-3 uk-width-small-1-3 uk-container-center">
-        <form class="uk-form">
-          <div class="uk-form-row">
-            <input type="text" ng-model="result.title" class="uk-width-1-1" /> </div>
-          <div class="uk-form-row">
-            <input type="text" ng-model="result.subtitle" class="uk-width-1-1" />
+<body>
+  <div id="page">
+    <div id="content_container" ng-controller="igController" ng-init="mock = 0" class="desktop-bg">
+      <div class="content">
+        <div class="wrap">
+          <canvas id="resultCanvas" style="display:inline-block;" width="612" height="612"></canvas>
+          <div style="margin-bottom:10px;text-align:center">
           </div>
 
+          <label for="title">คาถาเชียร์ช้างศึก</label>
+          <input name="title" type="text" ng-model="result.title" class="titleInput" />
+
+          <label for="subtitle">อยากบอกทีมช้างศึกของเราว่า...</label>
+          <input name="subtitle" type="text" ng-model="result.subtitle" class="titleInput" />
+          <!-- <a ng-if="(isLogin == 2)" href="#" class="fb button" ng-click="login()"> Login With Facebook เพื่อใช้ภาพโปรไฟล์</a> -->
+          <!-- <a href="#" class="logout fb button ng-scope" ng-if="(isLogin == 1)" ng-click="shareResult()">แชร์ไปที่เฟสบุ้ก</a> -->
+          <a class="fb button" id="download"> Download ภาพนี้ </a>
+
+        </div>
 
 
-          <div class="uk-form-row">
-            <button class="uk-button uk-button-primary" id="download"> Download ภาพนี้ </button>
+        <div class="mock-container">
+          <div class="mock-wrap">
+            <div class="mock" ng-click="selectTheme(0)">
+              <div class="pic-wrap">
+                <img src="images/zigoig.jpg">
+              </div>
+              <p>Share Image</p>
+            </div>
+            <div class="mock" ng-click="selectTheme(1)">
+              <div class="pic-wrap">
+                <img src="images/zigocover.jpg">
+              </div>
+              <p>Cover Facebook</p>
+            </div>
           </div>
-
-        </form>
-
-      </div>
-    </div>
-
-
-    <div class="uk-grid">
-      <div class="uk-width-1-5 uk-width-small-1-5 uk-width-large-1-6 " ng-click="selectTheme(0)">
-        <div class="uk-thumbnail">
-          <img src="images/b.jpg">
-          <div class="uk-thumbnail-caption">#แบบที่1 </div>
         </div>
 
-      </div>
-      <div class="uk-width-1-5 uk-width-small-1-5 uk-width-large-1-6 " ng-click="selectTheme(1)">
-
-        <div class="uk-thumbnail">
-          <img src="images/db.jpg">
-          <div class="uk-thumbnail-caption">#แบบที่2 </div>
+        <div class="social-box">
+          <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://devherehere.github.io/igapp/" data-text="ร่วมใจส่งแรงเชียร์ทีมชาติไทย !!" data-via="devherehere" data-lang="th">ทวีต</a>
+          <div class="fb-share-button" data-href="http://devherehere.github.io/igapp/" data-layout="button_count"></div>
         </div>
-
-      </div>
-
-      <div class="uk-width-1-5 uk-width-small-1-5 uk-width-large-1-6 " ng-click="selectTheme(2)">
-
-        <div class="uk-thumbnail">
-          <img src="images/y.jpg" class="">
-          <div class="uk-thumbnail-caption">#แบบที่3 </div>
+            <div style="margin-top:5px;">
+            <form class="uk-form">
+              <p class="uk-text-bottom" style="color:white;margin-bottom:5px;">ถ้าใช้ iphone 4/4s download ภาพไม่ได้ให้ copy link นี้ไปเปิดใน Safari</p>
+              <input type="text" class="uk-width-1-1" style="height:46px" value="http://devherehere.github.io/igapp/index.html" />
+            </form>
+          </div>
         </div>
       </div>
     </div>
-    <div class="uk-grid">
-      <div class="uk-width-2-4">
-        <div class="fb-like" data-href="" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
-        <div class="fb-share-button" data-href="" data-layout="button_count"></div>
-        <a class="twitter-share-button" data-counturl="">
-            Tweet
-        </a>
-      </div>
-    </div>
-
-    <div class="uk-grid">
-      <div class="uk-width-2-4">
-        <canvas id="fontCanvas" style="opacity:0;"></canvas>
-      </div>
-    </div>
-  </div>
+    <canvas id="fontCanvas" style="opacity:0;"></canvas>
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-animate/angular-animate.js"></script>
