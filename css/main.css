@@ -21,7 +21,7 @@
 }
 #page {
   display: table;
-  overflow: hidden;
+  /*overflow: hidden;*/
   margin: 0px auto;
 }
 *:first-child + html #page {
@@ -233,7 +233,7 @@ html, body {
   width: 100%;
   margin: auto;
   line-height: 1;
-  height: 100vh;
+  height: 100%;
   /*padding: 10px;*/
   padding-top:10px;
   text-align: center;
@@ -247,7 +247,7 @@ html, body {
   position: relative;
   background: url(../images/titled.png);
   border-radius: 5px;
-  overflow: hidden;
+  /*overflow: hidden;*/
   /*border: 1px solid #989898;*/
   margin-bottom: 30px;
 }
