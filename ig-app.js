@@ -47,14 +47,14 @@ app.controller('igController', function($scope, Facebook, $timeout, $interval) {
     $scope.shareconfirm = !$scope.shareconfirm;
   };
 
-  // $scope.shareResult = function(){
-  //     $scope.isLoading = true;
-  //     var c = document.getElementById("resultCanvas");
-  //     var data = c.toDataURL('image/png');
-  //     var encodedPng = data.substring(data.indexOf(',')+1,data.length);
-  //     var decodedPng = Base64Binary.decode(encodedPng);
-  //     PostImageToFacebook($scope.userToken,"result.png","image/png",decodedPng,$scope.result.msg,$scope.makeCover());
-  // };
+  $scope.shareResult = function(){
+      $scope.isLoading = true;
+      var c = document.getElementById("resultCanvas");
+      var data = c.toDataURL('image/png');
+      var encodedPng = data.substring(data.indexOf(',')+1,data.length);
+      var decodedPng = Base64Binary.decode(encodedPng);
+      PostImageToFacebook($scope.userToken,"result.png","image/png",decodedPng,$scope.result.msg,$scope.makeCover());
+  };
 
   $scope.downloadImage = function() {
     downloadCanvas(this, 'resultCanvas', 'cover-football.png');
@@ -97,9 +97,9 @@ app.controller('igController', function($scope, Facebook, $timeout, $interval) {
     ctx.textAlign = 'center';
     ctx.lineWidth = 1;
 
-    ctx.font = "bold 96px MAX_PINJOHN";
+    ctx.font = "normal 96px Fontcraft";
     if ($scope.indexOfCover == 1) {
-      ctx.font = "bold 80px MAX_PINJOHN"; //106
+      ctx.font = "normal 55px Fontcraft"; //106
     }
     var textWidth = (ctx.measureText(text).width);
 
@@ -112,16 +112,12 @@ app.controller('igController', function($scope, Facebook, $timeout, $interval) {
     if ((textWidth + shift) > coverSize.x) {
       var fontsize = 138;
       while ((textWidth + shift) > coverSize.x - 80) {
-        ctx.font = "bold " + fontsize + "px MAX_PINJOHN";
+        ctx.font = "normal " + fontsize + "px Fontcraft";
         fontsize -= 2;
         textWidth = (ctx.measureText(text).width);
 
 
         if (textWidth < coverSize.x - (80 + shift)) { //80
-          ctx.shadowColor = "black";
-          ctx.shadowOffsetX = 4;
-          ctx.shadowOffsetY = 4;
-          ctx.shadowBlur = 10;
           ctx.fillStyle = "white";
           ctx.fillText(text, centerPos.x, centerPos.y - 30); //30
         }
@@ -129,19 +125,9 @@ app.controller('igController', function($scope, Facebook, $timeout, $interval) {
 
     } else {
       if ($scope.indexOfCover == 1) {
-        ctx.shadowColor = "black";
-        ctx.shadowOffsetX = 4;
-        ctx.shadowOffsetY = 4;
-        ctx.shadowBlur = 10;
-
         ctx.fillStyle = "white";
         ctx.fillText(text, centerPos.x, centerPos.y - 25); //32
       } else {
-        ctx.shadowColor = "black";
-        ctx.shadowOffsetX = 4;
-        ctx.shadowOffsetY = 4;
-        ctx.shadowBlur = 10;
-
         ctx.fillStyle = "white";
         ctx.fillText(text, centerPos.x, centerPos.y - 25); //30
       }
@@ -164,11 +150,11 @@ app.controller('igController', function($scope, Facebook, $timeout, $interval) {
     ctx.beginPath();
 
     if (bg.width > 640) {
-      recY = centerPos.y - 10
-      txtY = centerPos.y + 20;
+      recY = centerPos.y - 15
+      txtY = centerPos.y + 15;
     } else {
-      recY = centerPos.y + 5;
-      txtY = centerPos.y + 40;
+      recY = centerPos.y - 5;
+      txtY = centerPos.y + 30;
     }
 
     ctx.rect((centerPos.x - subtextWidth / 2) - 20, recY, subtextWidth + 40, rectHeight);
@@ -239,8 +225,6 @@ app.controller('igController', function($scope, Facebook, $timeout, $interval) {
         $scope.userToken = response.authResponse.accessToken;
 
         Facebook.api('me/', function(res) {
-
-
 
         });
 

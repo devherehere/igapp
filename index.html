@@ -7,9 +7,9 @@
 
   <meta property="og:title" content="">
   <meta property="og:description" content="">
-  <meta property="og:image" content="">
+  <meta property="og:image" content="http://github.com/devherehere/igapp/blob/gh-pages/images/zigoig.jpg">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="">
+  <meta property="og:url" content="http://devherehere.github.io/igapp/">
   <title></title>
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="bower_components/uikit/css/uikit.gradient.min.css">
@@ -18,6 +18,7 @@
 
 
   <script>
+    //google analatics
     (function(i, s, o, g, r, a, m) {
       i['GoogleAnalyticsObject'] = r;
       i[r] = i[r] || function() {
@@ -32,13 +33,48 @@
 
     ga('create', 'UA-66889611-1', 'auto');
     ga('send', 'pageview');
-  </script>
+    //facebook
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId: '1629772610604453',
+        xfbml: true,
+        version: 'v2.4'
+      });
+    };
 
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {
+        return;
+      }
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    //twitter
+    ! function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0],
+        p = /^http:/.test(d.location) ? 'http' : 'https';
+      if (!d.getElementById(id)) {
+        js = d.createElement(s);
+        js.id = id;
+        js.src = p + '://platform.twitter.com/widgets.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }
+    }(document, 'script', 'twitter-wjs');
+  </script>
 
   <style>
     @font-face {
       font-family: MAX_PINJOHN;
       src: url('MAX_PINJOHN.ttf');
+    }
+
+    @font-face {
+      font-family: Fontcraft;
+      src: url('Fontcraft.otf');
     }
   </style>
 
@@ -59,9 +95,9 @@
           <label for="title">คาถาเชียร์ช้างศึก</label>
           <input name="title" type="text" ng-model="result.title" class="titleInput" />
 
-          <label for="subtitle" >คำแนะนำทีมช้างศึก</label>
+          <label for="subtitle">คำแนะนำทีมช้างศึก</label>
           <input name="subtitle" type="text" ng-model="result.subtitle" class="titleInput" />
-
+          <a ng-if="(isLogin == 2)" href="#" class="fb button" ng-click="login()"> Login With Facebook เพื่อใช้ภาพโปรไฟล์</a>
           <a class="fb button" id="download"> Download ภาพนี้ </a>
 
         </div>
@@ -79,19 +115,24 @@
               <div class="pic-wrap">
                 <img src="images/zigocover.jpg">
               </div>
-              <p> cover facebook</p>
+              <p>Cover Facebook</p>
             </div>
           </div>
         </div>
 
+        <div class="social-box">
+          <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://devherehere.github.io/igapp/" data-text="ร่วมใจส่งแรงเชียร์ทีมชาติไทย !!" data-via="devherehere" data-lang="th">ทวีต</a>
+          <div class="fb-share-button" data-href="http://devherehere.github.io/igapp/" data-layout="button_count"></div>
+        </div>
+        <div
+          class="fb-like"
+          data-share="true"
+          data-width="450"
+          data-show-faces="true">
+        </div>
       </div>
-
       <canvas id="fontCanvas" style="opacity:0;"></canvas>
 
-
-      <div class="social-box">
-
-      </div>
     </div>
   </div>
 
