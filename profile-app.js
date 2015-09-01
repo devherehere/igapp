@@ -84,19 +84,10 @@ app.controller('profileController', function($scope, Facebook, $timeout, $http) 
     $scope.isLoading = true;
     var c = document.getElementById("resultCanvas");
     var data = c.toDataURL('image/png');
-    //var encodedPng = data.substring(data.indexOf(',') + 1, data.length);
-    //var decodedPng = Base64Binary.decode(encodedPng);
-    //PostImageToFacebook($scope.userToken, "result.png", "image/png", decodedPng, "http://devherehere.github.io/igapp/", $scope.makeProfile);
-    Facebook.ui({
-      app_id: 1629772610604453,
-      method: 'feed',
-      name: 'cheerthai',
-      link: 'http://devherehere.github.io/igapp/',
-      picture: data,
-      caption: 'ส่งแรงใจเชียร์ช้างศึก!!',
-      description: 'ส่งแรงใจเชียร์ช้างศึก'
-
-    }, function(response));
+    var encodedPng = data.substring(data.indexOf(',') + 1, data.length);
+    var decodedPng = Base64Binary.decode(encodedPng);
+    PostImageToFacebook($scope.userToken, "result.png", "image/png", decodedPng, "http://devherehere.github.io/igapp/", $scope.makeProfile);
+  
 
   };
 
