@@ -264,9 +264,9 @@ html, body {
 }
 #content_container .content .titleInput {
   display: block;
-  height: 50px;
+  height: 46px;
   width: 100%;
-  font-size: 38px;
+  font-size: 32px;
   margin-bottom: 5px;
   color: #b7b7b7;
 }

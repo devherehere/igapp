@@ -4,7 +4,7 @@ app.controller('igController', function($scope, Facebook, $timeout, $interval) {
   $scope.indexOfCover = 0;
   $scope.result = {
     title: 'รับแน่น กลางนิ่ง หน้าคม',
-    subtitle: 'ไม่ว่าเจอทีมไหนเรารวมใจเป็นหนึ่ง สู้ได้ทุกทีม...',
+    subtitle: 'จะเจอทีมไหนก็ไม่กลัว เพราะเรารวมใจเป็นหนึ่ง',
     msg: ""
   };
 
