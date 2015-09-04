@@ -38,13 +38,13 @@
     ga('create', 'UA-66889611-1', 'auto');
     ga('send', 'pageview');
     //facebook
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId: '1629772610604453',
-        xfbml: true,
-        version: 'v2.4'
-      });
-    };
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v2.4&appId=450182025154208";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 
     (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
@@ -127,7 +127,7 @@
 
         <div class="social-box">
           <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://devherehere.github.io/igapp/" data-text="ร่วมใจส่งแรงเชียร์ทีมชาติไทย !!" data-via="devherehere" data-lang="th">ทวีต</a>
-          <div class="fb-share-button" data-href="http://devherehere.github.io/igapp/index.html" data-layout="button_count"></div>
+          <div class="fb-like" data-href="http://devherehere.github.io/igapp/index.html" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
         </div>
             <div style="margin-top:5px;">
             <form class="uk-form">
