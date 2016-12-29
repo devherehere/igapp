@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="profileApp">
+<html lang="en" >
 
 <head>
   <meta charset="UTF-8">
@@ -77,23 +77,23 @@
   </style>
 
 </head>
-<body>
+<body ng-app="post" >
   <div id="page">
-    <div id="content_container" ng-controller="igController" ng-init="mock = 0" class="desktop-bg">
+    <div id="content_container" ng-controller="UserAction" ng-init="mock = 0" class="desktop-bg">
       <div class="content">
         <div class="wrap">
-          <canvas id="resultCanvas" style="display:inline-block;" width="612" height="612"></canvas>
+          <canvas id="resultCanvas" style="display:inline-block;" width="612" height="612" ></canvas>
           <div style="margin-bottom:10px;text-align:center">
           </div>
 
           <label for="title">คาถาเชียร์ช้างศึก</label>
-          <input name="title" type="text" ng-model="result.title" class="titleInput" />
+          <input name="title" type="text" ng-model="result.title" ng-change="change()" class="titleInput" />
 
           <label for="subtitle">อยากบอกทีมช้างศึกของเราว่า...</label>
-          <input name="subtitle" type="text" ng-model="result.subtitle" class="titleInput" />
+          <input name="subtitle" type="text" ng-model="result.subtitle" ng-change="change()" class="titleInput" />
           <!-- <a ng-if="(isLogin == 2)" href="#" class="fb button" ng-click="login()"> Login With Facebook เพื่อใช้ภาพโปรไฟล์</a> -->
           <!-- <a href="#" class="logout fb button ng-scope" ng-if="(isLogin == 1)" ng-click="shareResult()">แชร์ไปที่เฟสบุ้ก</a> -->
-          <a class="fb button" id="download"> Download ภาพนี้ </a>
+          <button class="fb button" id="download"> Download ภาพนี้ </button>
 
         </div>
 
@@ -129,14 +129,16 @@
       </div>
     </div>
     <canvas id="fontCanvas" style="opacity:0;"></canvas>
+    <canvas id="test"></canvas>
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-animate/angular-animate.js"></script>
   <script src="bower_components/angular-facebook/lib/angular-facebook.js"></script>
   <script src="bower_components/ngAnimate-animate.css/animate.js"></script>
   <script src="bower_components/ngFitText/src/ng-FitText.js"></script>
-  <script src="profile-app.js"></script>
-  <script src="ig-app.js"></script>
+  <script src="post.js"></script>
+  <!-- <script src="profile-app.js"></script>
+  <script src="ig-app.js"></script> -->
 </body>
 
 </html>
